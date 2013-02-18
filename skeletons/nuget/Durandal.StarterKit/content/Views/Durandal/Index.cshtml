@@ -35,6 +35,8 @@
         
         @if(HttpContext.Current.IsDebuggingEnabled) {
             <script type="text/javascript" src="~/App/durandal/amd/require.js" data-main="@Url.Content("~/App/main")"></script>
+            <script src="~/Scripts/jquery-migrate-1.1.0.min.js"></script>
+            <script src="~/Scripts/kendo/2012.3.1114/kendo.web.min.js"></script>
         } else {
             <script type="text/javascript" src="~/App/main-built.js"></script>
         }

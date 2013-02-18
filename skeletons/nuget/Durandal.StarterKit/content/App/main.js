@@ -16,18 +16,26 @@ define(function(require) {
 
     app.title = 'Durandal Starter Kit';
     app.start().then(function () {
+        ko.bindingHandlers.stopBinding = {
+            init: function () {
+                return { controlsDescendantBindings: true };
+            }
+        };
+        ko.virtualElements.allowedBindings.stopBinding = true;
+
         //Replace 'viewmodels' in the moduleId with 'views' to locate the view.
         //Look for partial views in a 'views' folder in the root.
         viewLocator.useConvention();
         
         //configure routing
         router.useConvention();
-        router.mapNav('welcome');
-        router.mapNav('flickr');
+        router.mapNav('rb-plugins/welcome/viewmodels/welcome');
 
+        //router.mapNav('flickr');
+        
         app.adaptToDevice();
         
         //Show the app by setting the root view model for our application with a transition.
-        app.setRoot('viewmodels/shell', 'entrance');
+        app.setRoot('shell', 'entrance');
     });
 });
