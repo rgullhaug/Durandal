@@ -10,7 +10,10 @@ namespace DurandalTemplate {
       bundles.Add(
         new ScriptBundle("~/scripts/vendor")
           .Include("~/Scripts/jquery-{version}.js")
+          .Include("~/Scripts/jquery-migrate-{version}.min.js")
+          .Include("~/Scripts/kendo/2012.3.1114/kendo.web.min.js")
           .Include("~/Scripts/knockout-{version}.js")
+          .Include("~/Scripts/knockout-kendo.min.js")
           .Include("~/Scripts/sammy-{version}.js")
           .Include("~/Scripts/bootstrap.min.js")
         );
