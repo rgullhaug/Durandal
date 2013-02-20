@@ -1,7 +1,6 @@
 ﻿<section>
     <h2 data-bind="html: displayName"></h2>
-    <!-- ko stopBinding: true -->
-    <form id="kendo-bindable">
+    <form data-mvvm-framework="kendo">
         <label>First Name:<input data-bind="value: firstName" /></label>
         <label>Last Name:<input data-bind="value: lastName" /></label>
         <label>Gender:<select data-bind="source: genders, value: gender"></select></label>
@@ -17,5 +16,5 @@
             </div>
         </div>
     </form>
-    <!-- /ko -->
+    <div data-bind="compose: 'rb-plugins/welcome/viewmodels/welcome'"></div>
 </section>

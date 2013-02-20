@@ -126,6 +126,8 @@
   <ItemGroup>
     <None Include="App_Start\DurandalBundleConfig.cs.pp" />
     <Compile Include="App_Start\DurandalBundleConfig.cs" />
+    <Content Include="App\Framework_extensions\knockout-extensions.js" />
+    <Content Include="App\Framework_extensions\viewModelBinderExtensions.js" />
     <Content Include="App\rb-plugins\component-a\viewmodels\component-a.js" />
     <Content Include="App\rb-plugins\component-a\views\component-a.html" />
     <Content Include="App\rb-plugins\component-b\viewmodels\component-b.js" />

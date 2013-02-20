@@ -10,11 +10,6 @@
             app.showMessage('Search not yet implemented...');
         },
         activate: function () {
-            router.mapAuto('viewmodels');
-            router.autoConvertRouteToModuleId = function (url, params) {
-                var route = router.stripParameter(url);
-                return route + "/viewmodels/" + route;
-            };
             return router.activate('welcome');
         }
     };

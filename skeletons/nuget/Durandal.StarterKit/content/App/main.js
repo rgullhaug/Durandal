@@ -8,21 +8,20 @@ define(function(require) {
     var app = require('durandal/app'),
         viewLocator = require('durandal/viewLocator'),
         system = require('durandal/system'),
-        router = require('durandal/plugins/router');
+        router = require('durandal/plugins/router'),
+        vmb = require('durandal/viewModelBinder'),
+        vmbExtensions = require('../App/Framework_extensions/viewModelBinderExtensions');
     
+    require('../App/Framework_extensions/knockout-extensions');
+        
     //>>excludeStart("build", true);
     system.debug(true);
     //>>excludeEnd("build");
 
     app.title = 'Durandal Starter Kit';
     app.start().then(function () {
-        ko.bindingHandlers.stopBinding = {
-            init: function () {
-                return { controlsDescendantBindings: true };
-            }
-        };
-        ko.virtualElements.allowedBindings.stopBinding = true;
-
+        //vmb.bind = vmbExtensions.bind;
+        
         //Replace 'viewmodels' in the moduleId with 'views' to locate the view.
         //Look for partial views in a 'views' folder in the root.
         viewLocator.useConvention();
