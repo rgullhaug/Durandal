@@ -1,7 +1,7 @@
 ﻿define(function (require) {
     return {
         bind: function (obj, view) {
-            doBind(obj, view, function () {
+            this.doBind(obj, view, function () {
                 var bindableElements = $(view).find('[data-bind]');
 
                 var kendoElements = $(view).find('[data-mvvm-framework=kendo]');

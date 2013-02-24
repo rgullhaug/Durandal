@@ -1,10 +1,13 @@
 ﻿define(function (require) {
-    
-    ko.bindingHandlers.stopBinding = {
-        init: function () {
-            return { controlsDescendantBindings: true };
-        }
-    };
-    ko.virtualElements.allowedBindings.stopBinding = true;
 
+    return {
+        addCustomBindings: function () {
+            ko.bindingHandlers.stopBinding = {
+                init: function () {
+                    return { controlsDescendantBindings: true };
+                }
+            };
+            ko.virtualElements.allowedBindings.stopBinding = true;
+        }
+    }
 });
