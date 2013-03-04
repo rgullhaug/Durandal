@@ -1,4 +1,10 @@
 /**
+ * almond 0.2.0 Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+ * Available via the MIT or new BSD license.
+ * see: http://github.com/jrburke/almond for details
+ */
+
+/**
  * @license RequireJS text 2.0.3 Copyright (c) 2010-2012, The Dojo Foundation All Rights Reserved.
  * Available via the MIT or new BSD license.
  * see: http://github.com/requirejs/text for details

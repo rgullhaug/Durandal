@@ -1,5 +1,5 @@
 {
-  "name": "main",
+  "name": "durandal/amd/almond-custom",
   "inlineText": true,
   "stubModules": [
     "durandal/amd/text"
@@ -7,13 +7,11 @@
   "paths": {
     "text": "durandal/amd/text"
   },
-  "baseUrl": "C:\\Users\\Roger\\Documents\\GitHub\\rbdurandal\\Durandal\\skeletons\\vstemplate\\DurandalTemplate\\DurandalTemplate\\App",
-  "mainConfigFile": "",
+  "baseUrl": "C:\\Users\\Rob\\Documents\\GitHub\\Durandal\\skeletons\\vstemplate\\DurandalTemplate\\DurandalTemplate\\App",
+  "mainConfigFile": "C:\\Users\\Rob\\Documents\\GitHub\\Durandal\\skeletons\\vstemplate\\DurandalTemplate\\DurandalTemplate\\App\\main.js",
   "include": [
     "main-built",
     "main",
-    "text!shell.html",
-    "shell",
     "durandal/app",
     "durandal/composition",
     "durandal/events",
@@ -31,19 +29,6 @@
     "durandal/transitions/entrance",
     "durandal/widgets/expander/controller",
     "text!durandal/widgets/expander/view.html",
-    "Framework_extensions/knockout-extensions",
-    "Framework_extensions/viewModelBinderExtensions",
-    "rb-plugins/component-b/viewmodels/component-b",
-    "text!rb-plugins/component-b/views/component-b.html",
-    "rb-plugins/component-x/viewmodels/component-x",
-    "text!rb-plugins/component-x/views/component-a.html",
-    "rb-plugins/demo/viewmodels/demo",
-    "text!rb-plugins/demo/views/demo.html",
-    "rb-plugins/flickr/viewmodels/flickr",
-    "text!rb-plugins/flickr/views/detail.html",
-    "text!rb-plugins/flickr/views/flickr.html",
-    "rb-plugins/welcome/viewmodels/welcome",
-    "text!rb-plugins/welcome/views/welcome.html",
     "viewmodels/flickr",
     "viewmodels/shell",
     "viewmodels/welcome",
@@ -55,8 +40,12 @@
   "exclude": [],
   "keepBuildDir": true,
   "optimize": "uglify2",
-  "out": "C:\\Users\\Roger\\Documents\\GitHub\\rbdurandal\\Durandal\\skeletons\\vstemplate\\DurandalTemplate\\DurandalTemplate\\App\\main-built.js",
+  "out": "C:\\Users\\Rob\\Documents\\GitHub\\Durandal\\skeletons\\vstemplate\\DurandalTemplate\\DurandalTemplate\\App\\main-built.js",
   "pragmas": {
     "build": true
-  }
+  },
+  "wrap": true,
+  "insertRequire": [
+    "main"
+  ]
 }

@@ -61,7 +61,6 @@
                     obj.setView(view);
                 }
             });
-        },
-        doBind: doBind
+        }
     };
 });

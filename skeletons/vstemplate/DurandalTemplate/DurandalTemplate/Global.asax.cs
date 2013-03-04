@@ -15,6 +15,8 @@ namespace DurandalTemplate {
       FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
       RouteConfig.RegisterRoutes(RouteTable.Routes);
       DurandalBundleConfig.RegisterBundles(BundleTable.Bundles);
+      RambaseBundleConfig.RegisterBundles(BundleTable.Bundles);
+      
     }
   }
 }
