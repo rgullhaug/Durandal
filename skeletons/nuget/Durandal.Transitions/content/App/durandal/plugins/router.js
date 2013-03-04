@@ -1,7 +1,4 @@
-﻿define(function (require) {
-    var system = require('../system'),
-        viewModel = require('../viewModel'),
-        app = require('../app');
+﻿define(['../system', '../viewModel', '../app'], function (system, viewModel, app) {
 
     //NOTE: Sammy.js is not required by the core of Durandal. 
     //However, this plugin leverages it to enable navigation.
@@ -30,6 +27,12 @@
     activeItem.settings.areSameItem = function (currentItem, newItem, activationData) {
         return false;
     };
+
+    function redirect(url) {
+        isNavigating(false);
+        system.log('Redirecting');
+        router.navigateTo(url);
+    }
 
     function cancelNavigation() {
         cancelling = true;
@@ -62,9 +65,6 @@
     }
 
     function activateRoute(routeInfo, params, module) {
-        params.routeInfo = routeInfo;
-        params.router = router;
-
         system.log('Activating Route', routeInfo, module, params);
 
         activeItem.activateItem(module, params).then(function (succeeded) {
@@ -78,6 +78,33 @@
 
     function shouldStopNavigation() {
         return cancelling || (sammy.last_location[1].replace('/', '') == previousRoute);
+    }
+
+    function handleGuardedRoute(routeInfo, params, instance) {
+        var resultOrPromise = router.guardRoute(routeInfo, params, instance);
+        if (resultOrPromise) {
+            if (resultOrPromise.then) {
+                resultOrPromise.then(function(result) {
+                    if (result) {
+                        if (typeof result == 'string') {
+                            redirect(result);
+                        } else {
+                            activateRoute(routeInfo, params, instance);
+                        }
+                    } else {
+                        cancelNavigation();
+                    }
+                });
+            } else {
+                if (typeof resultOrPromise == 'string') {
+                    redirect(resultOrPromise);
+                } else {
+                    activateRoute(routeInfo, params, instance);
+                }
+            }
+        } else {
+            cancelNavigation();
+        }
     }
 
     function ensureRoute(route, params) {
@@ -101,9 +128,17 @@
 
         isNavigating(true);
 
-        system.acquire(routeInfo.moduleId).then(function(module) {
+        system.acquire(routeInfo.moduleId).then(function (module) {
+            params.routeInfo = routeInfo;
+            params.router = router;
+
             var instance = router.getActivatableInstance(routeInfo, params, module);
-            activateRoute(routeInfo, params, instance);
+
+            if (router.guardRoute) {
+                handleGuardedRoute(routeInfo, params, instance);
+            } else {
+                activateRoute(routeInfo, params, instance);
+            }
         });
     }
 
@@ -275,8 +310,8 @@
                         routesByPath[processedRoute.path.toString()] = current;
                     }
 
+                    route.get('#/', handleDefaultRoute);
                     route.get(/\#\/(.*)/, handleWildCardRoute);
-                    route.get('', handleDefaultRoute);
                 });
 
                 sammy._checkFormSubmission = function () {
@@ -289,7 +324,7 @@
                     system.log.apply(system, args);
                 };
 
-                sammy.run();
+                sammy.run('#/');
             }).promise();
         }
     };
