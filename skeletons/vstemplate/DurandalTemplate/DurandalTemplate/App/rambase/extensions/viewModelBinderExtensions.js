@@ -2,8 +2,6 @@
     var viewModelBinder = require('durandal/viewModelBinder');
 
     var beforeBind = function (obj, view) {
-        var bindableElements = $(view).find('[data-bind]');
-
         var kendoElements = $(view).find('[data-mvvm-framework=kendo]');
         $(kendoElements).wrapAll('<div data-bind="stopBinding: true"></div>');
         for (var i = 0; i < kendoElements.length; i++) {
