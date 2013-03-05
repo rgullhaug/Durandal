@@ -127,7 +127,6 @@
     <None Include="App_Start\DurandalBundleConfig.cs.pp" />
     <Compile Include="App_Start\RambaseBundleConfig.cs" />
     <Compile Include="App_Start\DurandalBundleConfig.cs" />
-    <Content Include="App\rambase\extensions\applyBindingsExtensions.js" />
     <Content Include="App\rambase\extensions\routerExtensions.js" />
     <Content Include="App\rambase\extensions\knockout-extensions.js" />
     <Content Include="App\rambase\extensions\viewModelBinderExtensions.js" />
