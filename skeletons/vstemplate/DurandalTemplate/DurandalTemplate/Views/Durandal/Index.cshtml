@@ -35,7 +35,7 @@
         
         @Scripts.Render("~/scripts/vendor")
         @Scripts.Render("~/scripts/rambase")
-        
+
         @if(HttpContext.Current.IsDebuggingEnabled) {
             <script type="text/javascript" src="~/App/durandal/amd/require.js" data-main="@Url.Content("~/App/rbmain")"></script>
         } else {

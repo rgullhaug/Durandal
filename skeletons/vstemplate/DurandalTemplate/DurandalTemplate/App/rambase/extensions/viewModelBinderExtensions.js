@@ -12,7 +12,16 @@
 
     return {
         extend: function () {
-            viewModelBinder.beforeBind = beforeBind;
+            //viewModelBinder.beforeBind = function (obj, view) {
+            //    var kendoElements = $(view).find('[data-mvvm-framework=kendo]');
+            //    $(kendoElements).wrapAll('<div data-bind="stopBinding: true"></div>');
+            //    for (var i = 0; i < kendoElements.length; i++) {
+            //        kendo.bind(kendoElements[i], obj.viewModel);
+            //    }
+            //};
+            viewModelBinder.beforeBind = function (obj, view) {
+                kendo.bind(view, obj.viewModel);
+            };
         }
 
     }
