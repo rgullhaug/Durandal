@@ -1,24 +1,12 @@
 ﻿define(function (require) {
     var viewModelBinder = require('durandal/viewModelBinder');
 
-    var beforeBind = function (obj, view) {
-        var kendoElements = $(view).find('[data-mvvm-framework=kendo]');
-        $(kendoElements).wrapAll('<div data-bind="stopBinding: true"></div>');
-        for (var i = 0; i < kendoElements.length; i++) {
-            kendo.bind(kendoElements[i], obj.viewModel);
-        }
-    }
-
-
     return {
         extend: function () {
-            //viewModelBinder.beforeBind = function (obj, view) {
-            //    var kendoElements = $(view).find('[data-mvvm-framework=kendo]');
-            //    $(kendoElements).wrapAll('<div data-bind="stopBinding: true"></div>');
-            //    for (var i = 0; i < kendoElements.length; i++) {
-            //        kendo.bind(kendoElements[i], obj.viewModel);
-            //    }
-            //};
+            //this will make us to use 'data-kendo-bind' atribute instead of 'data-bind' attribute to avoid collision with knockout
+            kendo.ns = "kendo-";
+
+            //now before Durandal do knockout data bind, we call kendo bindings to get the kendo MVVM working
             viewModelBinder.beforeBind = function (obj, view) {
                 kendo.bind(view, obj.viewModel);
             };
